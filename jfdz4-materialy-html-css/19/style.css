@@ -1,0 +1,43 @@
+.site-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.columns-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.main-content {
+    flex: 7;
+    padding: 20px;
+    border-right: 1px solid gray;
+    background: rgb(220, 220, 0);
+}
+
+.site-sidebar {
+    flex: 3;
+    padding: 20px;
+    background: rgb(200, 200, 200);
+}
+
+.site-footer {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.gallery {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}

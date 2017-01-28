@@ -1,0 +1,25 @@
+.naglowek, .stopka {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 27px;
+    text-align: center;
+    box-shadow: 0 0 4px black;
+    box-sizing: border-box;
+    }
+
+.naglowek {
+    top: 0;
+    background-color: #97baff;
+}
+
+.stopka {
+    bottom: 0;
+    background-color: yellowgreen;
+    }
+
+.tekst {
+    padding: 7px;
+    padding-top: 33px;
+    padding-bottom: 33px;
+}

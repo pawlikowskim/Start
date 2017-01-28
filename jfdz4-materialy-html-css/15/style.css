@@ -1,0 +1,49 @@
+
+main, aside {
+    width: 500px;
+    margin: 0 auto;
+}
+
+
+ul {
+    margin: 10px;
+}
+
+ul ul {
+    margin: 6px;
+}
+
+li li {
+    font-weight: bolder;
+    color: blue;
+}
+
+p.important-text {
+    color: red;
+    font-size: 40px;
+}
+
+input[type=text] {
+    border: 2px solid red;
+}
+
+input[type=number] {
+    border: 2px solid darkslategray;
+}
+
+blockquote[lang=pl] {
+    color: purple;
+}
+
+:target {
+    font-size: 70px;
+}
+
+blockquote::first-letter {
+    color: black;
+    font-size: 44px;
+}
+
+::selection {
+    background-color: aqua;
+}

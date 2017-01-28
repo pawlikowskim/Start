@@ -1,0 +1,24 @@
+.float {
+    float: left;
+    margin-right: 22px;
+    margin-bottom: 11px;
+    transition: 1s;
+}
+
+.left {
+    float: left;
+    width: 66%;
+    padding: 13px;
+}
+
+.opis {
+    padding: 13px;
+    width: 22%;
+    float: left;
+    margin-left: 14px;
+}
+
+.float:hover {
+    opacity: 1;
+    transform: rotate(360deg)
+}

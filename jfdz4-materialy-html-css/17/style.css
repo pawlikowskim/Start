@@ -1,0 +1,17 @@
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+/*input:valid {
+    background-color: lawngreen;
+}
+*/
+input:invalid {
+    background-color: red;
+}

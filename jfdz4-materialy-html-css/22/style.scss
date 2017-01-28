@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+@import "mixins";
+@import "variables";
+
+body, h1, h2, p, address, a, button {
+  @extend %nice-fonts;
+}
+
+
+
+
+.site-header {
+  display: flex;
+  flex-direction: row;
+  color: red;
+}
+
