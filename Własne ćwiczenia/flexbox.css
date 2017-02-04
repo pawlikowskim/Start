@@ -1,13 +1,11 @@
 .fleximages {
-    max-width: 1200px;
-    max-height: 1000px;
+    /*max-height: 1500px;*/
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: center;
 }
 
-img {
+.imgGallerySection {
     margin: 15px;
    }
 
@@ -15,3 +13,13 @@ img {
     display: flex;
     flex-direction: column;
 }
+
+.gallery-container {
+    background: #ffa201;
+}
+
+.galleryAbout, .galleryTitle {
+    font-family: Raleway;
+}
+
+
