@@ -1,0 +1,75 @@
+<style>
+  td {
+    border: 1px solid #000;
+    width: 27px;
+    height: 27px;
+  }
+</style>
+
+
+
+<div id="app"></div>
+
+<script>
+
+
+  createTable(8,8);
+
+  repeat(8, greet);
+
+function greet(index) {
+  console.log('siema' + index);
+}
+function repeat(n, callback) {
+  for (var i = 0; i < n; i+= 1) {
+    callback(i);
+  }
+}
+
+   function createTable(width, height) {
+     var wstawtabeleNode= document.getElementById('app');
+     var tableNode = document.createElement('table');
+     var trNode, tdNode;
+
+     wstawtabeleNode.appendChild(tableNode);
+
+    repeat(height, function () {
+       trNode = document.createElement('tr');
+     repeat(width, function () {
+         tdNode = document.createElement('td');
+
+       tdNode.addEventListener('click', function (event) {
+         console.log(event);
+         var element = event.target;
+         var style = element.style;
+
+         var currentValue = element.getAttribute('numberOfClicks') || 0;
+         var newValue = parseInt(currentValue) + 1;
+         var colorId = newValue % 3;
+
+         element.setAttribute('numberOfClicks', newValue.toString());
+
+         if (colorId === 1) {
+         style.backgroundColor = 'red';
+         } else if (colorId === 2) {
+         style.backgroundColor = 'yellow';
+         }
+         else if (colorId === 0) {
+           style.backgroundColor = 'green';
+         }
+       });
+
+
+
+
+         trNode.appendChild(tdNode);
+       })
+       tableNode.appendChild(trNode);
+     });
+
+   }
+
+//  table.appendChild(tr);
+//  table.appendChild(tr);
+
+</script>

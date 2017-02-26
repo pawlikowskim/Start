@@ -1,0 +1,10 @@
+# WebStorm and other InteliJ IDE config files
+#
+# Those should be ignored globally per dev account
+# however we keep them here in case someone forget
+# to set them up on their machine.
+#
+# For more details check: 
+# https://help.github.com/articles/ignoring-files/#create-a-global-gitignore
+.idea
+

@@ -1,0 +1,115 @@
+<style>
+  td {
+    border: 1px solid #000;
+    width: 50px;
+    height: 50px;
+  }
+
+  .ourCell {
+    background: greenyellow;
+  }
+
+  .enemyCell {
+    background: red;
+  }
+
+  #foo {
+    width: 100px;
+    height: 50px;
+    background: navy;
+  }
+
+</style>
+
+<div id="game"></div>
+<div id="foo"></div>
+
+<script>
+  table();
+  addListeners();
+
+  function showWinner() {
+    var ourCells = document.querySelectorAll('#game .ourCell');
+    var enemyCells = document.querySelectorAll('#game .enemyCell');
+    console.log(
+      'The winner is: ',
+      ourCells.length > enemyCells.length ?
+        'YOU' :
+        'ENEMY'
+    );
+  }
+
+
+  var enemyIntervalId = setInterval(function () {
+    var emptyCells, randomlySelectedCell;
+    emptyCells = document.querySelectorAll(
+      '#game td:not(.ourCell):not(.enemyCell)');    //szukamy komorek ktore nie maja klasy .ourCell oraz nie sa juz enemyCell
+    console.log(emptyCells);
+    if (emptyCells.length === 0) {
+      clearInterval(enemyIntervalId);
+      showWinner();
+      return;
+  }
+
+  randomlySelectedCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+  randomlySelectedCell.classList.add('enemyCell');
+  },
+  800
+  )
+  ;
+
+  document.getElementById('foo').addEventListener('click', function (event) {
+    var intervalId;
+    intervalId = setInterval(function () {
+      var currentWidth = parseInt(event.target.offsetWidth); // lub (event.target.style.width) ale to zadziala jesli style bedzie wstawione bezposrednio w elemencie (div)
+      console.log(event.target.offsetWidth);  // wrzuca do konsoli wartosc liczbowa - aktualna szerokosc elementu
+      if (currentWidth >= 260) {
+        clearInterval(intervalId);
+      } else {
+        event.target.style.width = currentWidth + 1; // lub (currentWidth + 1) + 'px'; dla innej wersji przegladarki
+      }
+    }, 50);
+  });
+
+
+  function table() {
+    var container, row, cell, x, y;
+
+    container = document.getElementById('game');
+    for (y = 0; y < 5; y += 1) {
+      row = document.createElement('tr');
+      for (x = 0; x < 5; x += 1) {
+        cell = document.createElement('td');
+        row.appendChild(cell);
+      }
+      container.appendChild(row);
+    }
+  }
+
+  function getFirstOf(collection) {
+    return collection[0];
+    // TODO - komentarz wstawiany ku pamieci gdy zostawiamy nie skonczona prace, po zakonczeniu usunac go!
+    // FIXME komentarz co jest do naprawienia
+  }
+
+  function getLastOf(collection) {
+    return collection[collection.length - 1]; //length -1 poniewaz pierwsza komorka ma nr 0
+  }
+
+  function addListeners() {
+    var allCells = document.querySelectorAll('#game td'); // albo ('td' lub  tylko 'tr' itd)
+    console.log(allCells);
+    console.log(getFirstOf(allCells));
+    console.log(getLastOf(allCells));
+
+    for (var i = 0; i < allCells.length; i += 1) {
+      allCells[i].addEventListener('click', function (event) {
+        console.log(event);
+        event.target.classList.add('ourCell'); //dodanie klasy .ourCell do komorki po kliknieciu
+//    event.target.classList.remove('ourCell'); //usuniecie klasy - po tym samym kliknieciu wiec bez debuggera nie zobaczymy tego!
+      })
+    }
+
+  }
+
+</script>
