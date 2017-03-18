@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="lib/qunit.css">
+
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+
+<script src="lib/jquery-2.2.3.min.js"></script>
+<script src="lib/qunit.js"></script>
+<script src="data.js"></script>
+<script>
+  /**
+   * Returns an array with students having their top notes.
+   *
+   * @param students
+   */
+  function getStudentsWithTopNotes(students) {
+      // ToDo: implement
+    return students.map(function(student) {
+var maxLastPosition = student.notes.sort(function (x, y) {
+return (x - y) // tu mamy tablice z posortowanymi ocenami, najwyzsza na koncu bo posortowane rosnaco
+//  if (a < b) return 1;
+//  else if (a === b) return 0;  // to jest to samo co w powyzszej linii  -> return (x - y)
+//  else return -1;
+});  // tu przed ; mozna wstawic index czyli gdy tablica malejaco [0] i wtedy mamy najwyzsza ocene a w topNote: maxLastPosition
+
+        return {
+          id: student.id,
+          name: student.name,
+          topNote: maxLastPosition.pop(),  // pop() zwraca ostatni element z tablicy (czyli najwyzsza ocene)
+        };
+    }
+    )
+  }
+
+  QUnit.test('Get students with top notes', function (assert) {
+    assert.deepEqual(
+      getStudentsWithTopNotes(data.students),
+      [
+        {
+          id: 1,
+          name: 'Jacek',
+          topNote: 5
+        },
+        {
+          id: 2,
+          name: 'Ewa',
+          topNote: 5
+        },
+        {
+          id: 3,
+          name: 'Zygmunt',
+          topNote: 4
+        }
+      ]
+    );
+  });
+</script>

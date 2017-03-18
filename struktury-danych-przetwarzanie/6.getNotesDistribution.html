@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="lib/qunit.css">
+
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+
+<script src="lib/jquery-2.2.3.min.js"></script>
+<script src="lib/qunit.js"></script>
+<script src="data.js"></script>
+<script>
+  /**
+   * Returns an object with distribution of notes
+   *
+   * @param students
+   */
+  function getNotesDistribution(students) {
+
+    var oceny = students.reduce(function (array, student) {
+     return array.concat(student.notes);
+    }, []);
+
+    return oceny.reduce(function(summary, ocena) {
+      if (summary[ocena] === undefined) {
+      summary[ocena] = 1;
+    } else
+    {
+      summary[ocena]++;
+    }
+    return summary;
+
+    }, {});
+
+
+
+console.log(oceny)
+  }
+
+
+  QUnit.test('Get notes distribution', function (assert) {
+    assert.deepEqual(
+      getNotesDistribution(data.students),
+      {
+        '5': 4,
+        '4': 3,
+        '3': 6,
+        '2': 5
+      }
+    );
+  });
+</script>

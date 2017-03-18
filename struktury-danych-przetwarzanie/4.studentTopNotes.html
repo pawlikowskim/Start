@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="lib/qunit.css">
+
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+
+<script src="lib/jquery-2.2.3.min.js"></script>
+<script src="lib/qunit.js"></script>
+<script src="data.js"></script>
+<script>
+  /**
+   * Returns an array with top note of every student.
+   *
+   * @param students
+   */
+//  function getStudentTopNotes(students) {  // ta funkcja dziala :)
+//
+//    return students.map(function(student) {
+//        var maxFirstPosition = student.notes.sort(function (x, y) {
+//          return (y - x);
+//        })
+//      return maxFirstPosition[0]; // lub return student.notes[0] - tez zadziala
+//    }
+//
+//    )
+//      }
+
+
+  function getStudentTopNotes(students) {
+
+    return students.map(function(student) {
+        return student.notes.reduce(function(max, note) {
+//          return note > max ? note : max;  // inne rozwiazanie
+          return Math.max(max, note);
+//          if (note > max)   // jeszcze inne rozwiazanie
+//            return note;
+//          return max;
+        }, -Infinity);
+
+      });
+  }
+
+
+  QUnit.test('Get top notes', function (assert) {
+    assert.deepEqual(
+      getStudentTopNotes(data.students),
+      [5, 5, 4]
+    );
+  });
+</script>

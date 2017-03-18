@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="lib/qunit.css">
+
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+
+<script src="lib/jquery-2.2.3.min.js"></script>
+<script src="lib/qunit.js"></script>
+<script src="data.js"></script>
+<script>
+
+  /**
+   * Returns an object representing student with most favs.
+   *
+   * @param students
+   * @param favoriteTracks
+   */
+  function getStudentWithMostFavs(students, favoriteTracks) {
+var maxFavTracks = favoriteTracks.reduce(function(max, favorite) {
+  if (favorite.tracks.length > max.tracks.length)
+    return favorite;
+  return max;
+
+  ), favoriteTracks[0]};
+
+    var student = students.filter(function(student) {
+    return student.id === maxFavTracks.studentId;
+    })[0];
+
+    return favoriteTracks.map(function(student){
+
+  id: student.id,
+  name: student.name,
+  notes: student.notes,
+
+    })
+
+  }
+
+
+
+  QUnit.test('Get student with most favs', function (assert) {
+    assert.deepEqual(
+      getStudentWithMostFavs(data.students, data.favoriteTracks),
+      {
+        id: 2,
+        name: 'Ewa',
+        notes: [2, 3, 3, 3, 2, 5],
+        favoriteTracks: ['A', 'B', 'C']
+      }
+    );
+  });
+</script>

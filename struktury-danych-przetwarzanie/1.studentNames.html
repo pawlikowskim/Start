@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="lib/qunit.css">
+
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+
+<script src="lib/jquery-2.2.3.min.js"></script>
+<script src="lib/qunit.js"></script>
+<script src="data.js"></script>
+<script>
+  /**
+   * Returns an array with student names.
+   *
+   * @param students
+   */
+
+
+//  function getStudentNames(students) {
+//    var studentNames = students.map(name);  //moje próby, nie jest potrzebna deklaracja pustej tablicy
+//    return studentNames;
+//      // ToDo: implement
+//  }
+
+  function getStudentNames(students) {
+    return students.map(function(student) {
+      return student.name;
+    })
+  };
+
+
+
+
+  QUnit.test('Get student names', function (assert) {
+    assert.deepEqual(
+      getStudentNames(data.students),
+      ['Jacek', 'Ewa', 'Zygmunt']
+    );
+  });
+</script>
